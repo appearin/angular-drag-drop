@@ -12,11 +12,11 @@ angular.module('myApp').directive('dropArea', function() {
             });
             $element.bind('dragleave', function(e) {
                 $scope.$apply(function() {
+                    e.stopPropagation();
+                    e.preventDefault();
                     if (isValidCallback) {
                         callback();
                     }
-                    e.stopPropagation();
-                    e.preventDefault();
                 });
             });
             $element.bind('drop', function(e) {
