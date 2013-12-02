@@ -1,0 +1,14 @@
+<html ng-app="myApp">
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body ng-controller="dragAndDropController" drag-area="handleDragEvent" drop-area>
+        <div id="uploadBox" ng-show="showUploadBox" drop-area="handleDroppedFile">
+        </div>
+    </body>
+
+    <script src="angular.min.js"></script>
+    <script src="main.js"></script>
+    <script src="../src/dragArea.js"></script>
+    <script src="../src/dropArea.js"></script>
+</html>
