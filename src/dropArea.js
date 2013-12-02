@@ -2,8 +2,8 @@ angular.module('myApp').directive('dropArea', function() {
     return {
         restrict: 'A',
         link: function($scope, $element, $attributes) {
-            var callback = $attributes.dropArea;
-            var isValidCallback = !!($scope[callback] && typeof $scope[callback] === "function");
+            var callback = $scope[$attributes.dropArea];
+            var isValidCallback = !!(callback && typeof callback === 'function');
             // In order for the 'drop' event not to navigate away from the page
             // we need to stop the 'dragover' event propagation
             $element.bind('dragover', function(e) {
@@ -13,7 +13,7 @@ angular.module('myApp').directive('dropArea', function() {
             $element.bind('dragleave', function(e) {
                 $scope.$apply(function() {
                     if (isValidCallback) {
-                        $scope[callback]();
+                        callback();
                     }
                     e.stopPropagation();
                     e.preventDefault();
@@ -25,7 +25,7 @@ angular.module('myApp').directive('dropArea', function() {
                     e.preventDefault();
                     var files = e.dataTransfer.files;
                     if (isValidCallback) {
-                        $scope[callback](files);
+                        callback(files);
                     }
                 });
             });
