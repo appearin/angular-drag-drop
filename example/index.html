@@ -4,6 +4,7 @@
     </head>
     <body ng-controller="dragAndDropController" drag-area="handleDragEvent" drop-area>
         <div id="uploadBox" ng-show="showUploadBox" drop-area="handleDroppedFile">
+            <p ng-show="fileType">Uploaded file of type "{{ fileType }}" with file size: {{ fileSize }} Bytes
         </div>
     </body>
 
